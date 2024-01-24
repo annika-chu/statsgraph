@@ -1,0 +1,37 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the demand curves
+P = np.linspace(10, 50, 100)
+D1 = 100 - 1.5 * P
+D2 = 120 - 1.5 * P
+
+# Define the supply curve (assuming it's linear and unchanged)
+S = 50 + 0.5 * P
+
+# Find the equilibrium points by solving for P where D1 = S and D2 = S
+Peq1 = (100 - 50) / (1.5 + 0.5)
+Qeq1 = 50 + 0.5 * Peq1
+Peq2 = (120 - 50) / (1.5 + 0.5)
+Qeq2 = 50 + 0.5 * Peq2
+
+# Create the plot
+plt.figure(figsize=(8, 6))
+plt.plot(P, D1, label='D1: Initial Demand')
+plt.plot(P, D2, label='D2: Increased Demand', linestyle='--')
+plt.plot(P, S, label='S: Supply', color='green')
+plt.axhline(y=Peq1, color='grey', linestyle='--', alpha=0.5)
+plt.axvline(x=Qeq1, color='grey', linestyle='--', alpha=0.5)
+plt.axhline(y=Peq2, color='blue', linestyle='--', alpha=0.5)
+plt.axvline(x=Qeq2, color='blue', linestyle='--', alpha=0.5)
+plt.scatter([Qeq1, Qeq2], [Peq1, Peq2], color='red')
+plt.text(Qeq1, Peq1, ' E1', verticalalignment='bottom', horizontalalignment='right')
+plt.text(Qeq2, Peq2, ' E2', verticalalignment='bottom', horizontalalignment='right')
+plt.xlabel('Quantity (Q)')
+plt.ylabel('Price (P)')
+plt.title('Shift in Demand Curve in the Goods and Services Market')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+print('Equilibrium moves from E1 (P:', Peq1, ', Q:', Qeq1, ') to E2 (P:', Peq2, ', Q:', Qeq2, ')')
